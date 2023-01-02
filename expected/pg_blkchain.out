@@ -1,0 +1,18 @@
+CREATE EXTENSION pg_blkchain;
+SELECT op_sym, encode(data, 'escape')
+  FROM parse_script(E'\\x04ffff001d0104455468652054696d65732030332f4a616e2f32'::bytea ||
+                    E'\\x303039204368616e63656c6c6f72206f6e206272696e6b206f66'::bytea ||
+                    E'\\x207365636f6e64206261696c6f757420666f722062616e6b73'::bytea);
+   op_sym    |                                encode                                 
+-------------+-----------------------------------------------------------------------
+ OP_PUSHDATA | \377\377\000\x1D
+ OP_PUSHDATA | \x04
+ OP_PUSHDATA | The Times 03/Jan/2009 Chancellor on brink of second bailout for banks
+(3 rows)
+
+SELECT get_block('\x00600020adaa40d52aac6c5c6f6fbda32e4e62fc687f9ae611a7020000000000000000005baabe664844a0950bd00a738a976f000d70dc6ae5669daec1968b78c7579c5b18439d63303808179c6d60e3');
+                                                                                        get_block                                                                                        
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ (536895488,"\\xadaa40d52aac6c5c6f6fbda32e4e62fc687f9ae611a702000000000000000000","\\x5baabe664844a0950bd00a738a976f000d70dc6ae5669daec1968b78c7579c5b",1671250712,386414640,-480219748)
+(1 row)
+

@@ -1,13 +1,12 @@
+MODULES = pg_blkchain
+
 EXTENSION     = pg_blkchain
 DATA          = pg_blkchain--0.0.1.sql
-TESTS         = $(wildcard test/sql/*.sql)
 
-REGRESS_OPTS  = --inputdir=test             \
-                --load-extension=pg_blkchain
-REGRESS       = $(patsubst test/sql/%.sql,%,$(TESTS))
+REGRESS       = ${EXTENSION}
 MODULE_big    = pg_blkchain
-SRCS        = pg_blkchain.c
-OBJS        = $(SRCS:.c=.o)
+#SRCS        = pg_blkchain.c
+#OBJS        = $(SRCS:.c=.o)
 
 #SHLIB_LINK    += -lccoin
 SHLIB_LINK    += -lbitc
