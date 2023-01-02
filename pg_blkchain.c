@@ -5,6 +5,9 @@
 #include "bitc/script.h"
 #include "bitc/core.h"
 #include "bitc/serialize.h"
+#include "bitc/key.h"
+#include "bitc/script/interpreter.h"
+#include "bitc/primitives/block.h"
 
 /* For SRF */
 #include "access/htup_details.h"
